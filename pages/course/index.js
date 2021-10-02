@@ -3,8 +3,12 @@ import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon, PlayIcon } from "@heroicons/react/solid";
 
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
 function CourseDetails() {
+  const cartCtx = useContext(CartContext);
+
   const router = useRouter();
 
   const {
@@ -14,23 +18,22 @@ function CourseDetails() {
     rating,
     highestRated,
     img,
+    id,
   } = router.query;
 
-  const redirectToCheckout = async () => {
-    const {
-      data: { id },
-    } = await axios.post("/api/checkout_session", {
-      items: Object.entries(cartDetails).map(
-        ([_, { id, quantity }]) => ({
-          price: id,
-          quantity,
-        })
-      ),
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: id,
+      name: title,
+      price: price,
+      img: img,
+      title,
+      author,
+      rating,
+      highestRated,
     });
-
-    const stripe = await getStripe();
-    await stripe.redirectToCheckout({ sessionId: id });
   };
+
   return (
     <>
       <main className=''>
@@ -113,7 +116,7 @@ function CourseDetails() {
                 <img
                   src={img}
                   alt={title}
-                  className='h-[10rem] w-[28rem] object-cover'
+                  className='h-[10rem] w-[30rem] object-cover'
                 />
                 <div className='absolute top-0 w-full h-full bg-black opacity-50' />
                 <div className='absolute top-0 w-full h-full flex items-center justify-center'>
@@ -131,10 +134,13 @@ function CourseDetails() {
                   ₹ {price}
                 </h1>
                 <div className='flex items-center justify-between'>
-                  <button className='flex-grow bg-purple-700 text-white p-3 mt-4 mr-3 text-md font-semibold'>
+                  <button
+                    className='flex-grow bg-purple-700 text-white p-3 mt-4 mr-3 text-md font-semibold'
+                    onClick={addToCartHandler}
+                  >
                     Add to Cart
                   </button>
-                  <div className='border border-black p-3 -mb-4 '>
+                  <div className='border border-black p-3 -mb-4'>
                     <HeartIcon className='h-5' />
                   </div>
                 </div>

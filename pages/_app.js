@@ -1,5 +1,6 @@
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
+import CartProvider from "../store/CartProvider";
 
 import { Provider as AuthProvider } from "next-auth/client";
 import "tailwindcss/tailwind.css";
@@ -19,8 +20,10 @@ Router.events.on("routeChangeError", progress.finish);
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider session={pageProps.session}>
-      <Header />
-      <Component {...pageProps} />
+      <CartProvider>
+        <Header />
+        <Component {...pageProps} />
+      </CartProvider>
     </AuthProvider>
   );
 }

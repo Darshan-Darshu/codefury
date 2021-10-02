@@ -9,7 +9,8 @@ import Link from "next/link";
 import { MicrophoneIcon } from "@heroicons/react/solid";
 import { Avatar } from "@material-ui/core";
 import Router from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../../store/cart-context";
 import {
   signIn,
   signOut,
@@ -19,7 +20,14 @@ import {
 function Header() {
   const [input, setInput] = useState("");
   const [session] = useSession();
-  console.log(session);
+  const cartCtx = useContext(CartContext);
+
+  // const numberOfCartItems = cartCtx.items.reduce(
+  //   (curNumber, item) => {
+  //     return curNumber + item.amount;
+  //   },
+  //   0
+  // );
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -58,6 +66,7 @@ function Header() {
           placeholder='Search for anything'
         />
         <SearchIcon className='h-6 ml-2' />
+
         <button
           className='hidden'
           type='submit'
@@ -75,7 +84,7 @@ function Header() {
         </ul>
         <ul>
           <li className='text-sm cursor-pointer hover:text-purple-800'>
-            <Link href='/one-on-one-session'>
+            <Link href='https://1-1-session.netlify.app/'>
               1 - 1 Session
             </Link>
           </li>
@@ -89,7 +98,17 @@ function Header() {
 
       <div className='flex items-center space-x-8 ml-8 mr-4'>
         <HeartIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
-        <ShoppingCartIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
+        <Link href='/cart'>
+          <div className='relative flex items-center'>
+            <ShoppingCartIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
+
+            <div className='hidden md:flex absolute -top-2 -right-2 h-4 w-4 bg-purple-400 text-xs rounded-full'>
+              <span className='ml-1'>
+                {cartCtx.items.length}
+              </span>
+            </div>
+          </div>
+        </Link>
         <BellIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
         {!session ? (
           <button
