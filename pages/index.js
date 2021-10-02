@@ -106,7 +106,6 @@ export async function getServerSideProps() {
       recommendedSql,
       recommendedSweet,
       fullCourses: allData,
-      prices: prices.data,
     },
   };
 }
