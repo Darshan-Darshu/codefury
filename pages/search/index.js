@@ -3,7 +3,7 @@ import db from "../../firebase";
 import { useRouter } from "next/router";
 import SearchCourse from "../../components/Courses/SearchCourse";
 
-function index({ fullCourses }) {
+function Search({ fullCourses }) {
   const router = useRouter();
   const randomNumber = Math.floor(Math.random() * 10000);
 
@@ -40,7 +40,7 @@ function index({ fullCourses }) {
   );
 }
 
-export default index;
+export default Search;
 
 export async function getServerSideProps() {
   let allData = [];
