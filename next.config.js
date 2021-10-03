@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["s.udemycdn.com"],
+    domains: ["s.udemycdn.com", "codefury.herokuapp.com"],
   },
 
   env: {

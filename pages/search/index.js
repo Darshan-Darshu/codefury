@@ -1,7 +1,9 @@
 import db from "../../firebase";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 import SearchCourse from "../../components/Courses/SearchCourse";
+import Footer from "../../components/Footer/Footer";
 
 function Search({ fullCourses }) {
   const router = useRouter();
@@ -16,27 +18,37 @@ function Search({ fullCourses }) {
   //   console.log(filteredData);
 
   return (
-    <main className='bg-gray-50'>
-      <div className='max-w-7xl mx-auto'>
-        <h1 className='text-2xl py-6 font-semibold border-b-2 '>
-          {randomNumber} results for "{input}"
-        </h1>
+    <>
+      {" "}
+      <Head>
+        <title>
+          CODEFURY - Darshan - Sanju - Siddharth
+        </title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <main className='bg-gray-50'>
+        <div className='max-w-7xl mx-auto'>
+          <h1 className='text-2xl py-6 font-semibold border-b-2 '>
+            {randomNumber} results for "{input}"
+          </h1>
 
-        <div className='flex flex-col spaxe-y-4'>
-          {filteredData.map(
-            ({ img, price, title, author }) => (
-              <SearchCourse
-                key={title}
-                img={img}
-                title={title}
-                author={author}
-                price={price}
-              />
-            )
-          )}
+          <div className='flex flex-col spaxe-y-4'>
+            {filteredData.map(
+              ({ img, price, title, author }) => (
+                <SearchCourse
+                  key={title}
+                  img={img}
+                  title={title}
+                  author={author}
+                  price={price}
+                />
+              )
+            )}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
 

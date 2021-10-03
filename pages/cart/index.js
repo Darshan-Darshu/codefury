@@ -4,6 +4,7 @@ import CartContext from "../../store/cart-context";
 import { getSession, useSession } from "next-auth/client";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import Footer from "../../components/Footer/Footer";
 
 const stripePromise = loadStripe(
   process.env.stripe_public_key
@@ -38,39 +39,44 @@ function Cart({}) {
   };
 
   return (
-    <main className='bg-gray-50'>
-      <h1 className='text-xl font-bold mt-5 ml-6'>
-        My Order
-      </h1>
+    <>
+      <main className='bg-gray-50 mb-6'>
+        <h1 className='text-xl font-bold mt-5 ml-6 lg:ml-16'>
+          My Order
+        </h1>
 
-      <div className='flex justify-between mx-auto'>
-        <div className='flex flex-col flex-grow spaxe-y-4 ml-6'>
-          {cartCtx.items.map(
-            ({ img, price, title, author }) => (
-              <SearchCourse
-                key={title}
-                img={img}
-                title={title}
-                author={author}
-                price={price}
-              />
-            )
-          )}
-        </div>
+        <div className='flex justify-between mx-auto'>
+          <div className='flex flex-col flex-grow spaxe-y-4 ml-6 lg:ml-24'>
+            {cartCtx.items.map(
+              ({ img, price, title, author }) => (
+                <SearchCourse
+                  key={title}
+                  img={img}
+                  title={title}
+                  author={author}
+                  price={price}
+                />
+              )
+            )}
+          </div>
 
-        <div className='h-42 p-6 border mx-6'>
-          <h1 className='text-2xl font-bold'>
-            Total Amount: {cartCtx.totalAmount}
-          </h1>
-          <button
-            className='bg-purple-500 text-white mt-3 py-2 px-4'
-            onClick={createCheckoutSession}
-          >
-            Buy Now
-          </button>
+          <div className='h-42 p-6 border mx-6'>
+            <h1 className='text-2xl font-bold'>
+              Total Amount: {cartCtx.totalAmount}
+            </h1>
+            <button
+              className='bg-purple-500 text-white mt-3 py-2 px-4'
+              onClick={createCheckoutSession}
+              disabled={!session}
+            >
+              Buy Now
+            </button>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+      <Footer />
+    </>
   );
 }
 

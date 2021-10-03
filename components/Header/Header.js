@@ -6,11 +6,12 @@ import {
   MenuIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
-import { MicrophoneIcon } from "@heroicons/react/solid";
+// import { MicrophoneIcon } from "@heroicons/react/solid";
 import { Avatar } from "@material-ui/core";
 import Router from "next/router";
 import { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
+import Image from "next/image";
 import {
   signIn,
   signOut,
@@ -48,16 +49,26 @@ function Header() {
   return (
     <nav className='sticky top-0 h-20 flex items-center justify-between border-b-2 z-50 p-4 bg-white shadow-md'>
       <div className='flex items-center mr-4 ml-2 space-x-4'>
-        <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold cursor-pointer text-purple-900'>
+        {/* <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold cursor-pointer text-purple-900'>
           CODEFURY
-        </h1>
+        </h1> */}
+        <Link href='/'>
+          <div className='flex items-center mt-1 md:mt-2 lg:mt-3 relative h-[120px] w-[120px] md:h-[150px] md:w-[150px] lg:h-[200px] lg:w-[200px]'>
+            <Image
+              className=''
+              src='https://codefury.herokuapp.com/static/images/code-fury-sym.jpeg'
+              objectFit='contain'
+              layout='fill'
+            />
+          </div>
+        </Link>
+
         <p className='hidden lg:flex text-sm cursor-pointer hover:text-purple-800'>
           Problems
         </p>
       </div>
 
       <form className='flex items-center justify-between border flex-grow border-black rounded-full p-3 bg-blue-50'>
-        <MicrophoneIcon className='h-6 text-purple-800' />
         <input
           value={input}
           className='w-full outline-none ml-3 bg-transparent placeholder-gray-400 text-sm'
@@ -76,10 +87,10 @@ function Header() {
         </button>
       </form>
 
-      <div className='hidden lg:flex items-center space-x-8 ml-6'>
+      <div className='hidden lg:flex items-center space-x-8 md:ml-6'>
         <ul>
           <li className='text-sm cursor-pointer hover:text-purple-800 active:scale-95 transition duration-200 ease-out'>
-            My Courses
+            <Link href='/my-course'>My Courses</Link>
           </li>
         </ul>
         <ul>
@@ -96,7 +107,7 @@ function Header() {
         </ul>
       </div>
 
-      <div className='flex items-center space-x-8 ml-8 mr-4'>
+      <div className='flex items-center space-x-8 md:ml-8 mr-4'>
         <HeartIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
         <Link href='/cart'>
           <div className='relative flex items-center'>

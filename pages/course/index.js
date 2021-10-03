@@ -145,7 +145,7 @@ function CourseDetails() {
                   </div>
                 </div>
                 <button className='w-full bg-gray-200 text-black p-3 mt-4 mr-3 text-md font-semibold border border-black'>
-                  Buy Now
+                  <Link href='/cart'>Buy Now</Link>
                 </button>
               </div>
             </div>
