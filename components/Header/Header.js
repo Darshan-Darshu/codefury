@@ -48,7 +48,7 @@ function Header() {
 
   return (
     <nav className='sticky top-0 h-20 flex items-center justify-between border-b-2 z-50 p-4 bg-white shadow-md'>
-      <div className='flex items-center mr-4 ml-2 space-x-4'>
+      <div className='flex items-center mr-4 md:ml-2 space-x-2 md:space-x-4'>
         {/* <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold cursor-pointer text-purple-900'>
           CODEFURY
         </h1> */}
@@ -63,20 +63,20 @@ function Header() {
           </div>
         </Link>
 
-        <p className='hidden lg:flex text-sm cursor-pointer hover:text-purple-800'>
+        {/* <p className='hidden lg:flex text-sm cursor-pointer hover:text-purple-800'>
           Problems
-        </p>
+        </p> */}
       </div>
 
       <form className='flex items-center justify-between border flex-grow border-black rounded-full p-3 bg-blue-50'>
         <input
           value={input}
-          className='w-full outline-none ml-3 bg-transparent placeholder-gray-400 text-sm'
+          className='w-full outline-none md:ml-3 bg-transparent placeholder-gray-400 text-sm'
           type='text'
           onChange={inputChangeHandler}
           placeholder='Search for anything'
         />
-        <SearchIcon className='h-6 ml-2' />
+        <SearchIcon className='h-6 ml-1 md:ml-2' />
 
         <button
           className='hidden'
@@ -100,14 +100,14 @@ function Header() {
             </Link>
           </li>
         </ul>
-        <ul>
+        {/* <ul>
           <li className='text-sm cursor-pointer hover:text-purple-800'>
             Meeting
           </li>
-        </ul>
+        </ul> */}
       </div>
 
-      <div className='flex items-center space-x-8 md:ml-8 mr-4'>
+      <div className='flex items-center space-x-3 md:space-x-8 md:ml-8 md:mr-4'>
         <HeartIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
         <Link href='/cart'>
           <div className='relative flex items-center'>
@@ -123,7 +123,7 @@ function Header() {
         <BellIcon className='hidden md:flex h-6 hover:text-purple-800 cursor-pointer' />
         {!session ? (
           <button
-            className='bg-purple-600 py-2 px-4 text-white rounded-full'
+            className='bg-purple-600 py-2 px-4 text-white rounded-full text-xs md:text-sm w-20 md:w-24'
             onClick={signIn}
           >
             Sign In

@@ -6,7 +6,7 @@ function CourseRow({ recommendedItems, title }) {
       <h1 className='text-2xl font-semibold mb-3'>
         {title}
       </h1>
-      <div className='flex overflow-scroll scrollbar-hide'>
+      <div className='flex overflow-scroll scrollbar-hide mr-4 lg:mr-0'>
         {recommendedItems.map(
           ({ title, img, author, id }) => (
             <Course

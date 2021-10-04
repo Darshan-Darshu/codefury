@@ -35,7 +35,7 @@ function MyCourse({ fullCourses }) {
         </div>
         {fullCourses.map(({ img, title, author, id }) => (
           <div
-            className='mt-10'
+            className='mt-10 mx-6 md:mx-1'
             onClick={() => courseHandeler(id)}
           >
             <Course

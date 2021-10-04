@@ -15,6 +15,15 @@ function Cart({}) {
   const cartCtx = useContext(CartContext);
 
   const createCheckoutSession = async () => {
+    if (!session) {
+      alert("First You Must SignIn");
+      return;
+    }
+
+    if (cartCtx.items.length === 0) {
+      alert("No Course In Cart");
+      return;
+    }
     const stripe = await stripePromise;
 
     // Call the the backend to create checkout session
@@ -38,6 +47,10 @@ function Cart({}) {
     console.log("hello");
   };
 
+  const bgButton = session
+    ? "bg-purple-500 text-white"
+    : "bg-gray-500 text-black cursor-not-allowed";
+
   return (
     <>
       <main className='bg-gray-50 mb-6'>
@@ -45,18 +58,24 @@ function Cart({}) {
           My Order
         </h1>
 
-        <div className='flex justify-between mx-auto'>
+        <div className='flex flex-col md:flex-row justify-between mx-auto'>
           <div className='flex flex-col flex-grow spaxe-y-4 ml-6 lg:ml-24'>
-            {cartCtx.items.map(
-              ({ img, price, title, author }) => (
-                <SearchCourse
-                  key={title}
-                  img={img}
-                  title={title}
-                  author={author}
-                  price={price}
-                />
+            {cartCtx.items.length !== 0 ? (
+              cartCtx.items.map(
+                ({ img, price, title, author }) => (
+                  <SearchCourse
+                    key={title}
+                    img={img}
+                    title={title}
+                    author={author}
+                    price={price}
+                  />
+                )
               )
+            ) : (
+              <h1 className='mt-5 text-3xl font-semibold'>
+                "No courses in your cart"
+              </h1>
             )}
           </div>
 
@@ -65,9 +84,9 @@ function Cart({}) {
               Total Amount: {cartCtx.totalAmount}
             </h1>
             <button
-              className='bg-purple-500 text-white mt-3 py-2 px-4'
+              className={`${bgButton} mt-3 py-2 px-4`}
               onClick={createCheckoutSession}
-              disabled={!session}
+              // disabled={!session}
             >
               Buy Now
             </button>

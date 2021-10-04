@@ -52,7 +52,7 @@ function addCourse() {
         Add Course
       </h1>
       <form
-        className='mx-auto w-[28rem] mt-5'
+        className='mx-auto w-[16rem] md:w-[20rem] lg:w-[28rem] mt-5'
         onSubmit={addCourse}
       >
         <div>

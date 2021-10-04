@@ -37,7 +37,7 @@ export default function Home({
               title='Recommended for you'
             />
 
-            <section className='flex gap-2 lg:flex-row flex-col my-12 mr-4 items-center justify-between'>
+            <section className='flex gap-5 lg:flex-row flex-col my-12 mr-4 items-center justify-between'>
               <div className='flex flex-col rounded-md w-80 h-42 bg-white border border-white shadow-2xl items-center p-4'>
                 <h1 className='text-2xl text-purple-700 pt-3 font-semibold'>
                   LIVE COURSES

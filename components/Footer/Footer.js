@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className='grid grid-cols-1 md:grid-cols-4 px-52 py-14 bg-purple-700 text-white border-t-2 border-gray-200'>
+    <footer className='grid grid-cols-1 md:grid-cols-4 px-32 md:px-52 md:py-14 bg-purple-700 text-white border-t-2 border-gray-200 mt-8'>
       <div className='space-y-4 text-sm text-gray-200'>
         <h5 className='font-bold'>ABOUT</h5>
         <p>terms of service</p>
@@ -15,7 +15,7 @@ function Footer() {
         <p>Algorithmk</p>
         <p>How to begin?</p>
       </div>
-      <div className='space-y-4 text-sm text-gray-200'>
+      <div className='space-y-4 text-sm text-gray-200 mt-5 md:mt-5'>
         <h5 className='font-bold'>COMMUNITY</h5>
         <p>Diversity & Belonging</p>
         <p>Accessibility</p>
@@ -24,7 +24,7 @@ function Footer() {
         <p>internships </p>
         <p>Languages</p>
       </div>
-      <div className='space-y-4 text-sm text-gray-200'>
+      <div className='space-y-4 text-sm text-gray-200 mt-5 md:mt-0'>
         <h5 className='font-bold'>HOST</h5>
         <p>Host your home</p>
         <p>Host an Online Experience</p>
@@ -33,7 +33,7 @@ function Footer() {
         <p>Resource Centre </p>
         <p>Community Centre</p>
       </div>
-      <div className='space-y-4 text-sm text-gray-200'>
+      <div className='space-y-4 text-sm text-gray-200 mt-5 md:mt-0'>
         <h5 className='font-bold'>SUPPORT</h5>
         <p>Our COVID-19 Response</p>
         <p>Help Centre</p>

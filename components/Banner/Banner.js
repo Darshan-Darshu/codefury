@@ -10,11 +10,11 @@ function Banner() {
           objectFit='cover'
         />
       </div>
-      <div className='absolute top-1/4 h-44 m-w-42 ml-6 p-4 shadow-md bg-white'>
-        <h1 className='text-3xl md:text-4xl w-80'>
+      <div className='absolute top-1/4 md:h-44 w-40 md:w-96 md:m-w-42 ml-6 p-4 shadow-md bg-white'>
+        <h1 className='text-2xl md:text-4xl md:w-80'>
           Learning that gets you
         </h1>
-        <p className='text-sm font-semibold text-gray-500 w-80 mt-4'>
+        <p className='text-xs font-semibold text-gray-500 md:w-80 mt-4'>
           Skills for you present (and your future) started
           with us
         </p>

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon, PlayIcon } from "@heroicons/react/solid";
-
+import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
 
 function CourseDetails() {
   const cartCtx = useContext(CartContext);
+  const [session] = useSession();
 
   const router = useRouter();
 
@@ -22,6 +23,11 @@ function CourseDetails() {
   } = router.query;
 
   const addToCartHandler = (amount) => {
+    if (!session) {
+      alert("First you must signin");
+      return;
+    }
+
     cartCtx.addItem({
       id: id,
       name: title,
@@ -151,11 +157,11 @@ function CourseDetails() {
             </div>
           </div>
 
-          <div className='border border-gray-200 w-[30rem] mx-auto md:w-[40rem] lg:w-[50rem] lg:mx-[14rem] p-5 shadow-md mt-4'>
+          <div className='border border-gray-200 w-[20rem] mx-auto md:w-[40rem] lg:w-[50rem] lg:mx-[14rem] p-5 shadow-md mt-4'>
             <h1 className='text-xl font-bold'>
               What you'll learn
             </h1>
-            <div className=' mt-2 flex flex-col lg:flex-row lg:space-x-2 text-gray-700 text-sm'>
+            <div className=' mt-2 flex flex-col lg:flex-row lg:space-x-2 text-gray-700 text-xs md:text-sm'>
               <ol className='space-y-3'>
                 <li>
                   Learn, implement, and use different Data
